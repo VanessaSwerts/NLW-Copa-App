@@ -6,7 +6,7 @@ import { useNavigation, useFocusEffect } from '@react-navigation/native'
 import { Header } from '../components/Header';
 import { Button } from '../components/Button';
 import { Loading } from '../components/Loading'
-import { PollCard, PollCardsPros } from '../components/PollCard'
+import { PollCard, PollCardsProps } from '../components/PollCard'
 import { EmptyPollList } from '../components/EmptyPollList'
 
 import { api } from '../services/api'
@@ -14,7 +14,7 @@ import { api } from '../services/api'
 export function Polls() {
   const { navigate } = useNavigation();
   const [isLoading, setIsLoading] = useState(true);
-  const [polls, setPolls] = useState<PollCardsPros[]>([]);
+  const [polls, setPolls] = useState<PollCardsProps[]>([]);
   const toast = useToast();
 
   async function getPolls() {
@@ -57,7 +57,12 @@ export function Polls() {
           : <FlatList
             data={polls}
             keyExtractor={item => item.id}
-            renderItem={({ item }) => <PollCard data={item} />}
+            renderItem={({ item }) => (
+              <PollCard
+                data={item}
+                onPress={() => navigate('details', { id: item.id })}
+              />
+            )}
             ListEmptyComponent={() => <EmptyPollList />}
             showsVerticalScrollIndicator={false}
             _contentContainerStyle={{ pb: 10 }}
