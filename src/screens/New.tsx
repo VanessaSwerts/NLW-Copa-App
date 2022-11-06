@@ -13,7 +13,7 @@ export function New() {
       <VStack mt={8} mx={5} alignItems="center">
         <Logo />
 
-        <Heading fontFamily="heading" color="white" fontSize="xl" mb={8} textAlign="center">
+        <Heading fontFamily="heading" color="white" fontSize="xl" my={8} textAlign="center">
           Crie seu próprio bolão da copa {'\n'} e compartilhe entre amigos!
         </Heading>
 
