@@ -29,7 +29,7 @@ export function Guesses({ pollId, code }: Props) {
 
     } catch (error) {
       console.log(error);
-      
+
       toast.show({
         title: "Não foi possível carregar os jogos",
         placement: "top",
@@ -56,7 +56,7 @@ export function Guesses({ pollId, code }: Props) {
       });
 
       toast.show({
-        title: "Palpite enviado com sucesso!",
+        title: "Palpite realizado com sucesso!",
         placement: "top",
         bgColor: "green.500",
       });
