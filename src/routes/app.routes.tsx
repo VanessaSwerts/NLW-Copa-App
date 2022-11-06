@@ -5,6 +5,7 @@ import { PlusCircle, SoccerBall } from 'phosphor-react-native'
 
 import { New } from '../screens/New';
 import { Polls } from '../screens/Polls';
+import { Find } from '../screens/Find';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -34,7 +35,7 @@ export function AppRoutes() {
         name="new"
         component={New}
         options={{
-          tabBarIcon: ({ color, size }) => <PlusCircle color={color} size={size} />,
+          tabBarIcon: ({ color }) => <PlusCircle color={color} size={size} />,
           tabBarLabel: 'Novo bolão'
         }}
       />
@@ -43,9 +44,15 @@ export function AppRoutes() {
         name="polls"
         component={Polls}
         options={{
-          tabBarIcon: ({ color, size }) => <SoccerBall color={color} size={size} />,
+          tabBarIcon: ({ color }) => <SoccerBall color={color} size={size} />,
           tabBarLabel: 'Meus bolões'
         }}
+      />
+
+      <Screen
+        name="find"
+        component={Find}
+        options={{ tabBarButton: () => null }}
       />
     </Navigator>
   )
