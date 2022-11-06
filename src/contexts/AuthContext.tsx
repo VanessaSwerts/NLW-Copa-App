@@ -29,7 +29,7 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
 
 
   const [request, response, promptAsync] = Google.useAuthRequest({
-    clientId: '',
+    clientId: process.env.CLIENT_ID,
     redirectUri: AuthSession.makeRedirectUri({ useProxy: true }),
     scopes: ['profile', 'email']
   });
@@ -53,9 +53,11 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
       setIsUserLoading(true);
 
       const tokenResponse = await api.post('/users', { access_token })
+      console.log(tokenResponse)
       api.defaults.headers.common['Authorization'] = `Bearer ${tokenResponse.data.token}`
 
       const userInfoResponse = await api.get('/me')
+      console.log(userInfoResponse)
       setUser(userInfoResponse.data.user)
 
     } catch (error) {
